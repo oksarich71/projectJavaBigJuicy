@@ -7,7 +7,7 @@ const ReviewList = (props) => {
       <Review
         pub={rev.pub}
         user={rev.user}
-        image={rev.image}
+        // image={rev.image}
         overall={rev.overall}
         price={rev.price}
         text={rev.text}

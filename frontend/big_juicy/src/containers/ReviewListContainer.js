@@ -9,13 +9,11 @@ class ReviewListContainer extends Component {
 
 
   componentDidMount(){
-    //make get request here
-    //then remove the line below that says 'return null'
-    // let req = new Request()
-    //req.get('address of api').then((data) => {
-    //this.setState({reviews: data._embedded.WHATGOESHERE})
-    //})
-    return null;
+    let req = new Request()
+    req.get('/SampleDataSet.JSON').then((data) => {
+    this.setState({reviews: data._embedded.reviews})
+    })
+
   }
 
   render(){
