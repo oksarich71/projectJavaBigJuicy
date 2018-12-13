@@ -1,17 +1,23 @@
 import React, {Component} from 'react';
+import ReviewList from '../components/ReviewList.js';
 
 class ReviewListContainer extends Component {
   constructor(props){
     super(props);
-    // state
+    this.state = {reviews: []}
+  }
+
+  
+  componentDidMount(){
+    //make get request here
+    //then remove the line below this
+    return null;
   }
 
   render(){
     return(
       <div>
-        <h4>this is a review</h4>
-        <h4>this is a second review</h4>
-        <h4>this is a third review</h4>
+        <ReviewList reviews={this.state.reviews}/>
       </div>
     )
   }

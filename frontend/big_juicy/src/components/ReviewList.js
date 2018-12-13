@@ -17,7 +17,9 @@ const ReviewList = (props) => {
 
   return (
     <div className="review-thingy">
+
       {arrayOfReviews}
+
     </div>
   )
 }
