@@ -1,10 +1,13 @@
 package com.codeclan.project.project.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
-
-    @Entity
+@Entity
     @Table(name = "users")
     public class User {
 
@@ -15,8 +18,14 @@ import javax.persistence.*;
         @Column(name = "name")
         private String name;
 
-        public User(String name) {
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Review> reviews;
+
+
+    public User(String name) {
             this.name = name;
+            this.reviews = new ArrayList<Review>();
         }
 
         public User() {

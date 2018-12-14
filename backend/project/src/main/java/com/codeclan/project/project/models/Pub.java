@@ -1,9 +1,13 @@
 package com.codeclan.project.project.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
-    @Entity
+@Entity
     @Table(name = "pubs")
     public class Pub {
 
@@ -15,15 +19,21 @@ import javax.persistence.*;
         private String name;
 
         @Column(name = "latitude")
-        private int latitude;
+        private double latitude;
 
         @Column(name = "longitude")
-        private int longitude;
+        private double longitude;
 
-        public Pub(String name, int latitude, int longitude) {
+    @JsonIgnore
+    @OneToMany(mappedBy = "pub", fetch = FetchType.LAZY)
+    private List<Review> reviews;
+
+
+    public Pub(String name, double latitude, double longitude) {
             this.name = name;
             this.latitude = latitude;
             this.longitude = longitude;
+            this.reviews = new ArrayList<Review>();
         }
 
         public Pub() {
@@ -45,7 +55,7 @@ import javax.persistence.*;
             this.name = name;
         }
 
-        public int getLatitude() {
+        public double getLatitude() {
             return latitude;
         }
 
@@ -53,7 +63,7 @@ import javax.persistence.*;
             this.latitude = latitude;
         }
 
-        public int getLongitude() {
+        public double getLongitude() {
             return longitude;
         }
 
