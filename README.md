@@ -2,7 +2,7 @@
 
 #Final project using Spring and React.
 
-
+Brief approved by Craig, Thursday 1pm.
 
 ###############
 
