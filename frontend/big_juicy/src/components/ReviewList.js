@@ -4,9 +4,10 @@ import Review from './Review.js';
 const ReviewList = (props) => {
   const arrayOfReviews = props.reviews.map((rev) => {
     return (
-      <li key={rev.id}>
+
       <div className="is-this-a-review">
         <Review
+          // needs a key
           // pub={rev.pub}
           // user={rev.user}
           // // image={rev.image}
@@ -17,7 +18,7 @@ const ReviewList = (props) => {
           species={rev.species}
         />
       </div>
-      </li>
+
     )
   })
 
