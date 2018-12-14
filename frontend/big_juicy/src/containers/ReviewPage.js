@@ -14,6 +14,3 @@ const ReviewPage = (props) => {
 }
 
 export default ReviewPage;
-
-// <FormsListContainer>
-// <ReviewListContainer>

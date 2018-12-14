@@ -22,5 +22,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "./src/"
+  "proxy": "http://hp-api.herokuapp.com"
 }

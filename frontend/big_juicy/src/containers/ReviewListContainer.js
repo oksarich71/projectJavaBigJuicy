@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ReviewList from '../components/ReviewList.js';
+import Request from '../helpers/Request.js';
 
 class ReviewListContainer extends Component {
   constructor(props){
@@ -10,8 +11,10 @@ class ReviewListContainer extends Component {
 
   componentDidMount(){
     let req = new Request()
-    req.get('/SampleDataSet.JSON').then((data) => {
-    this.setState({reviews: data._embedded.reviews})
+    req.get('http://hp-api.herokuapp.com/api/characters/students')
+    .then((data) => {
+    this.setState({reviews: data})
+    console.log("this is this.state.reviews:", this.state.reviews);
     })
 
   }
