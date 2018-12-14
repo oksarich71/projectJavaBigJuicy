@@ -4,6 +4,8 @@ class ReviewForm extends Component {
   constructor(props){
     super(props);
     this.state = {
+      user: "",
+      pub: "",
       image: "",
       review: "",
       overall: "",
@@ -31,20 +33,22 @@ class ReviewForm extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    const {image, review, overall, price} = this.state;
+    const {user, pub, image, review, overall, price} = this.state;
 
-    // if (!user || !pub || !overall) {
-    //   return;
-    // }
+    if (!user || !pub || !overall) {
+      return;
+    }
 
     const newReview = {
+      user: user,
+      pub: pub,
       image: image,
       review: review,
       overall: overall,
       price: price
     };
     this.props.handleReviewSubmit(newReview);
-    this.setState({image: "", review: "", overall: "", price: ""});
+    this.setState({user: "", pub: "", image: "", review: "", overall: "", price: ""});
   }
 
 
@@ -54,7 +58,7 @@ class ReviewForm extends Component {
     const allUsers = this.props.users.map((user, index) => {
       return <option key={index} value={user.name}>{user.name}</option>
     })
-    
+
     const allPubs = this.props.pubs.map((pub, index) => {
       return <option key={index} value={pub.species}>{pub.species}</option>
     })
