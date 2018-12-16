@@ -46,4 +46,8 @@ import java.util.List;
         public void setName(String name) {
             this.name = name;
         }
+
+        public void add(Review review){
+        reviews.add(review);
+    }
     }

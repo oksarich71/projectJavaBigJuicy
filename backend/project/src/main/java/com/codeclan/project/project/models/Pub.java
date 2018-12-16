@@ -65,11 +65,11 @@ import java.util.List;
         return price;
     }
 
-    public void setPrice(double price) {
+       public void setPrice(double price) {
         this.price = price;
     }
 
-    public double getLatitude() {
+       public double getLatitude() {
             return latitude;
         }
 
@@ -84,5 +84,9 @@ import java.util.List;
         public void setLongitude(int longitude) {
             this.longitude = longitude;
         }
+
+        public void add(Review review){
+        reviews.add(review);
+    }
 
     }
