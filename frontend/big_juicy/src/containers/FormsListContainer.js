@@ -25,23 +25,27 @@ class FormsListContainer extends Component {
       });
     });
   }
+  //do you want to sort the data so the newest thing is at the top of the list?
 
   handleReviewSubmit(review){
     const req = new Request();
     req.post('/address/of/api', review)
     // .then make sure its added or something
+    //maybe show a <p> review added! </p> or something
   }
 
   handleUserSubmit(user){
     const req = new Request();
     req.post('address', user)
     // better make sure I can make multiple post requests here
+    //maybe show a <p> user added! </p> or something
   }
 
   handlePubSubmit(pub){
     const req = new Request();
     req.post('address', pub)
     //better make sure I can make multiple post requests
+    //maybe show a <p> pub added! </p> or something
   }
 
   render(){

@@ -104,14 +104,18 @@ class ReviewForm extends Component {
           <input id="price" type="number" step=".01" min="0"/>
         </div>
 
+
         <div className="form-item">
-          <label>Add some text to this review:</label>
-          <input
-            type="text"
+          <label>Write your review here:</label>
+          <br/>
+          <textarea
+            rows="6"
+            columns="10"
             placeholder="Enter review here"
             value={this.state.review}
             onChange={this.handleTextChange}
-          />
+            >
+          </textarea>
         </div>
 
         <div className="form-item">
@@ -127,10 +131,3 @@ class ReviewForm extends Component {
 }
 
 export default ReviewForm;
-
-
-//need to make drop-down menu for users and pubs and populate dynamically
-// <div class="form-item">
-//   <label for="user">Select user:</label>
-//   <input id="user" type="select"/>
-// </div>
