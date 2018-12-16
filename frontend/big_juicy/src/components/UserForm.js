@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 
 class UserForm extends Component {
   constructor(props){
@@ -31,7 +31,7 @@ class UserForm extends Component {
       <form className="form" onSubmit={this.handleSubmit}>
 
         <h3>Add a new user:</h3>
-        
+
         <input
           type="text"
           placeholder="enter new user name"

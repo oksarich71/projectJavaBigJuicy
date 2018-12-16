@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React from 'react';
 import Review from './Review.js';
 
 const ReviewList = (props) => {
@@ -20,6 +20,10 @@ const ReviewList = (props) => {
       </div>
 
     )
+    //do we now need to sort arrayOfReviews so that the newest review is at the top?
+    //how does the id parameter work?
+    //we submit a review, it is saved to the api, we get all reviews from the api
+    //we want the most recent review to be at the top
   })
 
   return (

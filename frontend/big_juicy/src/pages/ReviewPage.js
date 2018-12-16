@@ -1,6 +1,6 @@
 import React from 'react';
-import FormsListContainer from './FormsListContainer.js';
-import ReviewListContainer from './ReviewListContainer.js';
+import FormsListContainer from '../containers/FormsListContainer.js';
+import ReviewListContainer from '../containers/ReviewListContainer.js';
 
 
 const ReviewPage = (props) => {

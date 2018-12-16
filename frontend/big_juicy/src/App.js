@@ -1,11 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
-import ReviewPage from './containers/ReviewPage.js';
+import HomePage from './pages/HomePage.js';
+import ReviewPage from './pages/ReviewPage.js';
+import NavBar from './NavBar.js';
 
 class App extends Component {
   render() {
     return (
-      <ReviewPage/>
+      <Fragment>
+        <NavBar/>
+        <HomePage/>
+      </Fragment>
 
     );
   }
