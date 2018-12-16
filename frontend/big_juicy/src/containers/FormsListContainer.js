@@ -47,15 +47,15 @@ class FormsListContainer extends Component {
   render(){
     return(
       <div>
-        <h3>Add a new user:</h3>
+
         <UserForm
           handleUserSubmit={this.handleUserSubmit}
         />
-        <h3>Add a new pub</h3>
+
         <PubForm
           handlePubSubmit={this.handlePubSubmit}
         />
-        <h3>Add a new review</h3>
+
         <ReviewForm
           users={this.state.users}
           pubs={this.state.pubs}

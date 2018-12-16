@@ -65,7 +65,9 @@ class ReviewForm extends Component {
 
 
     return(
-      <form onSubmit={this.handleSubmit}>
+      <form className="form" onSubmit={this.handleSubmit}>
+
+        <h3>Add a review:</h3>
 
         <div className="form-item">
           <label>Select User</label>
@@ -99,7 +101,7 @@ class ReviewForm extends Component {
 
         <div className="form-item">
           <label>Price: £</label>
-          <input id="price" type="number" step=".01"/>
+          <input id="price" type="number" step=".01" min="0"/>
         </div>
 
         <div className="form-item">

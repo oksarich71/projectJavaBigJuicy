@@ -28,7 +28,8 @@ class PubForm extends Component {
 
   render(){
     return(
-      <form onSubmit={this.handleSubmit}>
+      <form className="form" onSubmit={this.handleSubmit}>
+        <h3>Add a new pub:</h3>
         <input
           type="text"
           placeholder="enter new pub name"
