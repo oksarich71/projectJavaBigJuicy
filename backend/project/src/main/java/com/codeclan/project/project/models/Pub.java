@@ -18,6 +18,10 @@ import java.util.List;
         @Column(name="name")
         private String name;
 
+        @Column(name="price")
+        private double price;
+
+
         @Column(name = "latitude")
         private double latitude;
 
@@ -29,10 +33,12 @@ import java.util.List;
     private List<Review> reviews;
 
 
-    public Pub(String name, double latitude, double longitude) {
+    public Pub(String name, double price, double latitude, double longitude) {
             this.name = name;
+            this.price = price;
             this.latitude = latitude;
             this.longitude = longitude;
+
             this.reviews = new ArrayList<Review>();
         }
 
@@ -55,7 +61,15 @@ import java.util.List;
             this.name = name;
         }
 
-        public double getLatitude() {
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getLatitude() {
             return latitude;
         }
 
@@ -70,4 +84,5 @@ import java.util.List;
         public void setLongitude(int longitude) {
             this.longitude = longitude;
         }
+
     }

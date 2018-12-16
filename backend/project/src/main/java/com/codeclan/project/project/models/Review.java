@@ -12,9 +12,6 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "price")
-    private Double price;
-
     @Column(name = "rating")
     private int rating;
 
@@ -34,8 +31,7 @@ public class Review {
     @JoinColumn(name = "pub_id", nullable = false)
     private Pub pub;
 
-    public Review(Double price, int rating, String text, String date, User user, Pub pub) {
-        this.price = price;
+    public Review(int rating, String text, String date, User user, Pub pub) {
         this.rating = rating;
         this.text = text;
         this.date = date;
@@ -54,13 +50,6 @@ public class Review {
         this.id = id;
     }
 
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
 
     public int getRating() {
         return rating;
