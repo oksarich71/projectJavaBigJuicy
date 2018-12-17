@@ -8,8 +8,8 @@ const ReviewList = (props) => {
       <div className="is-this-a-review">
         <Review
           // needs a key
-          // pub={rev.pub}
-          // user={rev.user}
+          pub={rev.pub}
+          user={rev.user}
           // // image={rev.image}
           rating={rev.rating}
           // price={rev.price}

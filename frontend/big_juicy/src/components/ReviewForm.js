@@ -99,10 +99,7 @@ class ReviewForm extends Component {
           <input id="rating" type="number" min="0" max="10"/>
         </div>
 
-        <div className="form-item">
-          <label>Price: £</label>
-          <input id="price" type="number" step=".01" min="0"/>
-        </div>
+        
 
 
         <div className="form-item">
@@ -131,3 +128,8 @@ class ReviewForm extends Component {
 }
 
 export default ReviewForm;
+
+// <div className="form-item">
+//   <label>Price: £</label>
+//   <input id="price" type="number" step=".01" min="0"/>
+// </div>
