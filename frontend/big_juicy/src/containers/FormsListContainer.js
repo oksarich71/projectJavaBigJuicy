@@ -3,6 +3,7 @@ import Request from '../helpers/Request.js';
 import ReviewForm from '../components/ReviewForm.js';
 import PubForm from '../components/PubForm.js';
 import UserForm from '../components/UserForm.js';
+import ReviewListContainer from './ReviewListContainer.js';
 
 class FormsListContainer extends Component {
   constructor(props){
@@ -29,6 +30,7 @@ class FormsListContainer extends Component {
 
   handleReviewSubmit(review){
     const req = new Request();
+    console.log("this is the review:", review);
     req.post('http://localhost:8080/api/reviews', review)
     .then(() => {
       this.componentDidMount();
@@ -52,6 +54,10 @@ class FormsListContainer extends Component {
     req.post('http://localhost:8080/api/pubs', pub)
     .then(() => {
       this.componentDidMount();
+    })
+    .then(() => {
+      console.log("now calling reviewlistcontainer didmount method");
+      ReviewListContainer.componentDidMount();
     })
     //better make sure I can make multiple post requests
     //maybe show a <p> pub added! </p> or something

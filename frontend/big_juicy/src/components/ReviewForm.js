@@ -15,13 +15,10 @@ class ReviewForm extends Component {
     this.handleImageTextChange = this.handleImageTextChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
-<<<<<<< HEAD
-=======
     this.handleRatingChange = this.handleRatingChange.bind(this);
     this.handleUserChange = this.handleUserChange.bind(this);
     this.handlePubChange = this.handlePubChange.bind(this);
->>>>>>> develop
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   };
 
   handleImageTextChange(event){
@@ -59,17 +56,10 @@ class ReviewForm extends Component {
     this.setState({date: inputText})
   }
 
-  //i dont curently have a handleRatingChange
-  //or a handlePriceChange
-  //see if theyre necessary
 
   handleSubmit(event){
     event.preventDefault();
-<<<<<<< HEAD
-    const {user, pub, image, review, overall, date} = this.state;
-=======
     const {user, pub, image, text, rating, date} = this.state;
->>>>>>> develop
 
     if (!user || !pub || !rating) {
       return;
@@ -79,21 +69,12 @@ class ReviewForm extends Component {
       user: user,
       pub: pub,
       image: image,
-<<<<<<< HEAD
-      review: review,
-      overall: overall,
-      date: date
-    };
-    this.props.handleReviewSubmit(newReview);
-    this.setState({user: "", pub: "", image: "", review: "", overall: "", date: ""});
-=======
       text: text,
       rating: rating,
       date: date
     };
     this.props.handleReviewSubmit(newReview);
     this.setState({user: "", pub: "", image: "", text: "", rating: "", date: ""});
->>>>>>> develop
   }
 
 
@@ -101,11 +82,11 @@ class ReviewForm extends Component {
   render(){
 
     const allUsers = this.props.users.map((user, index) => {
-      return <option key={index} value={user.name}>{user.name}</option>
+      return <option key={index} value={user}>{user.name}</option>
     })
 
     const allPubs = this.props.pubs.map((pub, index) => {
-      return <option key={index} value={pub.name}>{pub.name}</option>
+      return <option key={index} value={pub}>{pub.name}</option>
     })
 
 
@@ -154,19 +135,7 @@ class ReviewForm extends Component {
           <input id="rating" type="number" min="0" max="10" onChange={this.handleRatingChange}/>
         </div>
 
-<<<<<<< HEAD
-        <div className="form-item">
-          <label>Data:</label>
-          <input
-            type="text"
-            placeholder="Enter date"
-            value={this.state.date}
-            onChange={this.handleDateChange}
-          />
-        </div>
-=======
 
->>>>>>> develop
 
 
         <div className="form-item">
