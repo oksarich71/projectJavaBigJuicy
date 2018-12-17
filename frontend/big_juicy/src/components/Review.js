@@ -1,9 +1,7 @@
 import React from 'react';
 
 const Review = (props) => {
-  // if (!props.pub && !props.user) {
-  //   return <h2>Reviews are loading...</h2>
-  // }
+
   if (!props.rating && !props.text) {
     return <h2>Reviews are loading...</h2>
   }
@@ -11,7 +9,7 @@ const Review = (props) => {
 
   return (
     <div className="review-box">
-      <p>Review by: {props.user}</p>
+      <p>Reviewed on: {props.date}</p>
       <p>Overall: {props.rating}</p>
       <p>Text: {props.text}</p>
     </div>
@@ -20,8 +18,6 @@ const Review = (props) => {
 
 export default Review;
 
-// <p>User: {props.user}</p>
-// <p>Pub: {props.pub}</p>
-// <p>Price: {props.price}</p>
-// <p>Overall: {props.overall}</p>
-// <p>Text: {props.text}</p>
+// <p>Location: {props.pub}</p>
+// <p>Reviwed by: {props.user}</p>
+// <img src={props.image}>

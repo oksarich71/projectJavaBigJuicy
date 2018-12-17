@@ -14,6 +14,7 @@ class ReviewForm extends Component {
     };
     this.handleImageTextChange = this.handleImageTextChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
     // this.handleSubmit = this.handleSubmit.bind(this);
   };
 
@@ -27,13 +28,18 @@ class ReviewForm extends Component {
     this.setState({review: inputText})
   }
 
+  handleDateChange(event){
+    const inputText = event.target.value;
+    this.setState({date: inputText})
+  }
+
   //i dont curently have a handleRatingChange
   //or a handlePriceChange
   //see if theyre necessary
 
   handleSubmit(event){
     event.preventDefault();
-    const {user, pub, image, review, overall, price} = this.state;
+    const {user, pub, image, review, overall, date} = this.state;
 
     if (!user || !pub || !overall) {
       return;
@@ -45,10 +51,10 @@ class ReviewForm extends Component {
       image: image,
       review: review,
       overall: overall,
-      price: price
+      date: date
     };
     this.props.handleReviewSubmit(newReview);
-    this.setState({user: "", pub: "", image: "", review: "", overall: "", price: ""});
+    this.setState({user: "", pub: "", image: "", review: "", overall: "", date: ""});
   }
 
 
@@ -99,7 +105,15 @@ class ReviewForm extends Component {
           <input id="rating" type="number" min="0" max="10"/>
         </div>
 
-        
+        <div className="form-item">
+          <label>Data:</label>
+          <input
+            type="text"
+            placeholder="Enter date"
+            value={this.state.date}
+            onChange={this.handleDateChange}
+          />
+        </div>
 
 
         <div className="form-item">

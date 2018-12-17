@@ -18,7 +18,6 @@ class FormsListContainer extends Component {
     req.get("http://localhost:8080/api/pubs")
     .then((data) => {
       this.setState({pubs: data._embedded.pubs})
-      console.log("this is the line:", data._embedded.pubs);
     }).then(() => {
       req.get("http://localhost:8080/api/users")
       .then((data) => {
