@@ -15,6 +15,9 @@ class ReviewForm extends Component {
     this.handleImageTextChange = this.handleImageTextChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
+    this.handleRatingChange = this.handleRatingChange.bind(this);
+    this.handleUserChange = this.handleUserChange.bind(this);
+    this.handlePubChange = this.handlePubChange.bind(this);
     // this.handleSubmit = this.handleSubmit.bind(this);
   };
 
@@ -31,6 +34,21 @@ class ReviewForm extends Component {
   handleDateChange(event){
     const inputText = event.target.value;
     this.setState({date: inputText})
+  }
+
+  handleRatingChange(event){
+    const input = event.target.value;
+    this.setState({rating: input})
+  }
+
+  handleUserChange(event){
+    const input = event.target.value;
+    this.setState({user: input})
+  }
+
+  handlePubChange(event){
+    const input = event.target.value;
+    this.setState({pub: input})
   }
 
   //i dont curently have a handleRatingChange
@@ -77,12 +95,12 @@ class ReviewForm extends Component {
 
         <div className="form-item">
           <label>Select User</label>
-          <select name="user">
+          <select name="user" onChange={this.handleUserChange}>
               {allUsers}
           </select>
         </div>
 
-        <div className="form-item">
+        <div className="form-item" onChange={this.handlePubChange}>
           <label>Select Pub</label>
           <select name="pub">
               {allPubs}
@@ -112,7 +130,7 @@ class ReviewForm extends Component {
 
         <div className="form-item">
           <label>Overall rating:</label>
-          <input id="rating" type="number" min="0" max="10"/>
+          <input id="rating" type="number" min="0" max="10" onChange={this.handleRatingChange}/>
         </div>
 
 

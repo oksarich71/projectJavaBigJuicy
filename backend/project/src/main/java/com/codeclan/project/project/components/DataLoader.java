@@ -60,7 +60,7 @@ public class DataLoader implements ApplicationRunner {
             pubRepository.save(pub4);
             Pub pub5 = new Pub("The Merlin", 3.8, 55.929056, -3.210270);
             pubRepository.save(pub5);
-            Review review1 = new Review(10, "Head: Monica Lewinsky, Carbonation: Roy Keane, away to Juventus in ‘99; volatile, Vessel: 10/10, Tide lines: artic shelf, Taste: 10/10", "12.12.2018", "../images/juicy1.jpg", user2, pub1);
+            Review review1 = new Review(10, "Head: Monica Lewinsky, Carbonation: Roy Keane, away to Juventus in ‘99; volatile, Vessel: 10/10, Tide lines: artic shelf, Taste: 10/10", "12.12.2018", "https://media-cdn.tripadvisor.com/media/photo-s/0d/1b/54/39/pint-of-tennents-at-the.jpg", user2, pub1);
             reviewRepository.save(review1);
             Review review2 = new Review( 9, "Excellent taste, great carbonation. Superb 9 all round", "01.12.2018", "../images/juicy2.jpg", user1, pub2);
             reviewRepository.save(review2);
@@ -71,7 +71,7 @@ public class DataLoader implements ApplicationRunner {
                     "Taste:10/10: down like water, as per usual.\n" +
                     "Tide lines- 7/10: stellar lines, unfortunately few and far between.\n" +
                     "Vessel- 10/10: cast from clydside sand as it should be.\n" +
-                    "Overall- 9/10", "15.11.2018", "../images/juicy4.jpg", user10, pub3);
+                    "Overall- 9/10", "15.11.2018", "localhost:8080/images/juicy4.jpg", user10, pub3);
             reviewRepository.save(review4);
             Review review5 = new Review(9, "Head- too skinny 7/10\n" +
                     "Vessel-Xmas classic, easy 10/10\n" +
