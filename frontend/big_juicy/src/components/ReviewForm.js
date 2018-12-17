@@ -60,7 +60,7 @@ class ReviewForm extends Component {
     })
 
     const allPubs = this.props.pubs.map((pub, index) => {
-      return <option key={index} value={pub.species}>{pub.species}</option>
+      return <option key={index} value={pub.name}>{pub.name}</option>
     })
 
 

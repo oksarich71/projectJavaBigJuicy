@@ -11,9 +11,9 @@ class ReviewListContainer extends Component {
 
   componentDidMount(){
     let req = new Request()
-    req.get('http://hp-api.herokuapp.com/api/characters/students')
+    req.get('http://localhost:8080/api/reviews')
     .then((data) => {
-    this.setState({reviews: data})
+    this.setState({reviews: data._embedded.reviews})
     console.log("this is this.state.reviews:", this.state.reviews);
     })
 

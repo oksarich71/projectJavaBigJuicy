@@ -15,13 +15,14 @@ class FormsListContainer extends Component {
 
   componentDidMount(){
     const req = new Request();
-    req.get("http://hp-api.herokuapp.com/api/characters/students")
+    req.get("http://localhost:8080/api/pubs")
     .then((data) => {
-      this.setState({pubs: data})
+      this.setState({pubs: data._embedded.pubs})
+      console.log("this is the line:", data._embedded.pubs);
     }).then(() => {
-      req.get("http://hp-api.herokuapp.com/api/characters/students")
+      req.get("http://localhost:8080/api/users")
       .then((data) => {
-        this.setState({users: data})
+        this.setState({users: data._embedded.users})
       });
     });
   }

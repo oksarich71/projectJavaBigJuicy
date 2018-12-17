@@ -11,11 +11,9 @@ const ReviewList = (props) => {
           // pub={rev.pub}
           // user={rev.user}
           // // image={rev.image}
-          // overall={rev.overall}
+          rating={rev.rating}
           // price={rev.price}
-          // text={rev.text}
-          name={rev.name}
-          species={rev.species}
+          text={rev.text}
         />
       </div>
 
