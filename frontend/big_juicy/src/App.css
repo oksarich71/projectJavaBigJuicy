@@ -64,3 +64,8 @@
 textarea {
   width: 100%;
 }
+
+.review-image {
+  width: 200px;
+  height: auto;
+}

@@ -14,7 +14,7 @@ const Review = (props) => {
       <p>Reviewed on: {props.date}</p>
       <p>Overall Rating: {props.rating}</p>
       <p>Text: {props.text}</p>
-      <img src={props.image}></img>
+      <img className="review-image" src={props.image}></img>
     </div>
   )
 }
