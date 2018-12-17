@@ -30,21 +30,30 @@ class FormsListContainer extends Component {
 
   handleReviewSubmit(review){
     const req = new Request();
-    req.post('/address/of/api', review)
+    req.post('http://localhost:8080/api/reviews', review)
+    .then(() => {
+      this.componentDidMount();
+    })
     // .then make sure its added or something
     //maybe show a <p> review added! </p> or something
   }
 
   handleUserSubmit(user){
     const req = new Request();
-    req.post('address', user)
+    req.post('http://localhost:8080/api/users', user)
+    .then(() => {
+      this.componentDidMount();
+    })
     // better make sure I can make multiple post requests here
     //maybe show a <p> user added! </p> or something
   }
 
   handlePubSubmit(pub){
     const req = new Request();
-    req.post('address', pub)
+    req.post('http://localhost:8080/api/pubs', pub)
+    .then(() => {
+      this.componentDidMount();
+    })
     //better make sure I can make multiple post requests
     //maybe show a <p> pub added! </p> or something
   }
