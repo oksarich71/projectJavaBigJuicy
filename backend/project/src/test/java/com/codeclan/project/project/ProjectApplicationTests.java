@@ -64,6 +64,11 @@ public class ProjectApplicationTests {
 		List<Review> results = pubRepository.getAllReviewsForPub(3L);
 
 	}
+	@Test
+	public void canGetAllReviewsForDate(){
+		List<Review> found = reviewRepository.getAllReviewsForDate("01.12.2018");
+		assertEquals(2, found.size());
+	}
 
 
 }

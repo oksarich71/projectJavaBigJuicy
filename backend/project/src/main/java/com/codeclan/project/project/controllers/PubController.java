@@ -18,6 +18,11 @@ public class PubController {
     @Autowired
     PubRepository pubRepository;
 
+    @GetMapping
+    public List<Pub> getAllPubs(){
+        return pubRepository.findAll();
+    }
+
     @GetMapping(value = "/review/{id}")
     public List<Review> getAllReviewsForPub(@PathVariable Long id){
         return pubRepository.getAllReviewsForPub(id);
