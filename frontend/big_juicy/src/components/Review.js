@@ -11,7 +11,8 @@ const Review = (props) => {
 
   return (
     <div className="review-box">
-      <p>Rating: {props.rating}</p>
+      <p>Review by: {props.user}</p>
+      <p>Overall: {props.rating}</p>
       <p>Text: {props.text}</p>
     </div>
   )
