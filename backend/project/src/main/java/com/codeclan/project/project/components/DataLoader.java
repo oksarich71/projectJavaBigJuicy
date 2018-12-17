@@ -60,25 +60,25 @@ public class DataLoader implements ApplicationRunner {
             pubRepository.save(pub4);
             Pub pub5 = new Pub("The Merlin", 3.8, 55.929056, -3.210270);
             pubRepository.save(pub5);
-            Review review1 = new Review(10, "Head: Monica Lewinsky, Carbonation: Roy Keane, away to Juventus in ‘99; volatile, Vessel: 10/10, Tide lines: artic shelf, Taste: 10/10", "12.12.2018", user2, pub1);
+            Review review1 = new Review(10, "Head: Monica Lewinsky, Carbonation: Roy Keane, away to Juventus in ‘99; volatile, Vessel: 10/10, Tide lines: artic shelf, Taste: 10/10", "12.12.2018", "https://media-cdn.tripadvisor.com/media/photo-s/0d/1b/54/39/pint-of-tennents-at-the.jpg", user2, pub1);
             reviewRepository.save(review1);
-            Review review2 = new Review( 9, "Excellent taste, great carbonation. Superb 9 all round", "01.12.2018", user1, pub2);
+            Review review2 = new Review( 9, "Excellent taste, great carbonation. Superb 9 all round", "01.12.2018", "../images/juicy2.jpg", user1, pub2);
             reviewRepository.save(review2);
-            Review review3 = new Review(9, "Head - 8/10. Temperature - Ice cold 10/10. Vessel - As expected 10/10. Carbonation - Reminiscent of Hurricane Bawbag - proud 8/10. Overall a very strong juicy, 9/10", "25.11.2018", user3, pub4);
+            Review review3 = new Review(9, "Head - 8/10. Temperature - Ice cold 10/10. Vessel - As expected 10/10. Carbonation - Reminiscent of Hurricane Bawbag - proud 8/10. Overall a very strong juicy, 9/10", "25.11.2018", "../images/juicy3.jpg",user3, pub4);
             reviewRepository.save(review3);
             Review review4 = new Review( 9, "Head-8/10: too much foam in the centre, but I’ll allow it.\n" +
                     "carbonation-9/10\n" +
                     "Taste:10/10: down like water, as per usual.\n" +
                     "Tide lines- 7/10: stellar lines, unfortunately few and far between.\n" +
                     "Vessel- 10/10: cast from clydside sand as it should be.\n" +
-                    "Overall- 9/10", "15.11.2018", user10, pub3);
+                    "Overall- 9/10", "15.11.2018", "localhost:8080/images/juicy4.jpg", user10, pub3);
             reviewRepository.save(review4);
             Review review5 = new Review(9, "Head- too skinny 7/10\n" +
                     "Vessel-Xmas classic, easy 10/10\n" +
                     "Carbonation- average 6/10\n" +
                     "Taste-spot on 10/10\n" +
                     "Price - £3 fairly competitive\n" +
-                    "Overall superb juicer, will be returning","11.12.2018", user1, pub5);
+                    "Overall superb juicer, will be returning","11.12.2018", "../images/juicy5.jpg", user1, pub5);
             reviewRepository.save(review5);
             Review review6 = new Review(9, "A fine big juicy (never a fan of yer phone light pish, but tbf it does the pint justice).\n" +
                     "Head - 10/10. Perfect. \n" +
@@ -86,55 +86,55 @@ public class DataLoader implements ApplicationRunner {
                     "Vessel - 10/10\n" +
                     "Tide lines - TBC\n" +
                     "Taste - 9/10\n" +
-                    "Price - £3.60, fair enough. ", "01.12.2018", user5, pub3);
+                    "Price - £3.60, fair enough. ", "01.12.2018", "../images/juicy6.jpg", user5, pub3);
             reviewRepository.save(review6);
             Review review7 = new Review(10, "Head 11/10\n" +
                     "Taste 10/10\n" +
                     "Carbonisation 10/10\n" +
                     "Vessel - classic T\n" +
                     "Price - not important\n" +
-                    "it was the best of times, it was the blurst of times", "16.11.2018", user12, pub4);
+                    "it was the best of times, it was the blurst of times", "16.11.2018", "../images/juicy7.jpg", user12, pub4);
             reviewRepository.save(review7);
             Review review8 = new Review( 10, "Heed - fatter than a Morrison’s green grocer 10/10\n" +
                     "Vessel - Frosty & Jolly 10/10\n" +
                     "Carbonation - fizzy\n" +
-                    "Tidelines - yet to see but I’m looking forward to sailing the seven shores.", "28.10.2018", user8, pub2);
+                    "Tidelines - yet to see but I’m looking forward to sailing the seven shores.", "28.10.2018", "../images/juicy8.jpg", user8, pub2);
             reviewRepository.save(review8);
-            Review review9 = new Review( 8, "Nae filters, nae torch, just a solid 8/10 juicy for £3.50\n", "15.10.2018", user7, pub4);
+            Review review9 = new Review( 8, "Nae filters, nae torch, just a solid 8/10 juicy for £3.50\n", "15.10.2018", "../images/juicy9.jpg", user7, pub4);
             reviewRepository.save(review9);
             Review review10 =  new Review( 9, "Head - 7 bit steep \n" +
                     "Carbonation - 9 quite lively \n" +
                     "Vessel - 10 classic \n" +
                     "Taste - 10 juicy \n" +
                     "Temp - 10 frosty \n" +
-                    "Tide lines tbc", "18.10.2018", user9, pub3);
+                    "Tide lines tbc", "18.10.2018", "../images/juicy10.jpg", user9, pub3);
             reviewRepository.save(review10);
             Review review11 = new Review( 9, "Carbonation - for the nation - 10\n" +
                     "Head - 9 \n" +
                     "Price - A south side snip at £3:45\n" +
                     "Taste - premium 9.5\n" +
                     "Temp - Shove the heater on - 9.5\n" +
-                    "Vessel Standard - 9\n", "03.09.2018", user3, pub1);
+                    "Vessel Standard - 9\n", "03.09.2018", "../images/juicy11.jpg", user3, pub1);
             reviewRepository.save(review11);
             Review review12 = new Review(8, "Tide lines from heaven 10/10\n" +
                     "Head 7/10\n" +
                     "Carbonation 8/10\n" +
                     "Vessel of course 10/10\n" +
-                    "Taste 9/10 for refreshment", "25.10.2018", user6, pub2);
+                    "Taste 9/10 for refreshment", "25.10.2018", "../images/juicy12.jpg", user6, pub2);
             reviewRepository.save(review12);
             Review review13 = new Review( 8, "Vessel 5/10 as it’s an old one \n" +
                     "Taste 8/10 \n" +
                     "Head 8/10 \n" +
-                    "All round no bad juicy and seen as it’s a Tuesday it tastes bloody marvellous", "25.09.2018", user7, pub5);
+                    "All round no bad juicy and seen as it’s a Tuesday it tastes bloody marvellous", "25.09.2018", "../images/juicy13.jpg", user7, pub5);
             reviewRepository.save(review13);
             Review review14 = new Review( 8, "Vessel - 10/10\n" +
                     "Head - 4/10 its trapping the Simpsons in.\n" +
-                    "Carbonation - a solid 8/10 ", "25.11.2018", user8, pub1);
+                    "Carbonation - a solid 8/10 ", "25.11.2018", "../images/juicy14.jpg", user8, pub1);
             reviewRepository.save(review14);
             Review review15 = new Review(10, "10/10 for head \n" +
                     "Vessel 10/10\n" +
                     "Tide lines tbc\n" +
-                    "All around cracking pint", "05.12.2018", user9, pub2);
+                    "All around cracking pint", "05.12.2018", "../images/juicy15.jpg", user9, pub2);
             reviewRepository.save(review15);
             Review review16 = new Review(9, "First Time post long time juicer \n" +
                     "Head 10/10\n" +
@@ -142,16 +142,16 @@ public class DataLoader implements ApplicationRunner {
                     "Carbonation 7/10\n" +
                     "Temp a cool 8/10\n" +
                     "Head 10/10\n" +
-                    "Tide lines: not shown but a solid 7/10\n", "09.12.2018", user10, pub4);
+                    "Tide lines: not shown but a solid 7/10\n", "09.12.2018", "../images/juicy16.jpg", user10, pub4);
             reviewRepository.save(review16);
             Review review17 = new Review(10, "11/10 for this sexy bad boy.....\n" +
-                    " nice big frothy head..like an ice cream float but alcoholic...my life is made", "15.12.2018", user12, pub3);
+                    " nice big frothy head..like an ice cream float but alcoholic...my life is made", "15.12.2018", "../images/juicy17.jpg", user12, pub3);
             reviewRepository.save(review17);
             Review review18 = new Review(5, "Head: non-existent\n" +
                     "Vessel: wrong\n" +
                     "Carbonation: flat\n" +
                     "Tide lines: don't care anymore\n" +
-                    "Price: too much", "10.12.2018", user11, pub4);
+                    "Price: too much", "10.12.2018", "../images/juicy18.jpg", user11, pub4);
             reviewRepository.save(review18);
 
 

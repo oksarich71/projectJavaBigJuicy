@@ -80,6 +80,10 @@ public class Review {
         this.date = date;
     }
 
+    public String getImage() {return image;}
+
+    public void setImage(String image) { this.image = image; }
+
     public User getUser() {
         return user;
     }

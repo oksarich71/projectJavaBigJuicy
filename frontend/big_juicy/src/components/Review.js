@@ -9,9 +9,17 @@ const Review = (props) => {
 
   return (
     <div className="review-box">
+<<<<<<< HEAD
       <p>Reviewed on: {props.date}</p>
       <p>Overall: {props.rating}</p>
+=======
+      <p>Venue: {props.pub}</p>
+      <p>Review by: {props.user}</p>
+      <p>Reviewed on: {props.date}</p>
+      <p>Overall Rating: {props.rating}</p>
+>>>>>>> develop
       <p>Text: {props.text}</p>
+      <img src={props.image}></img>  
     </div>
   )
 }

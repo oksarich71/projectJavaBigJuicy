@@ -7,14 +7,20 @@ class ReviewForm extends Component {
       user: "",
       pub: "",
       image: "",
-      review: "",
-      overall: "",
-      price: ""
+      text: "",
+      rating: "",
+      date: ""
 
     };
     this.handleImageTextChange = this.handleImageTextChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
+<<<<<<< HEAD
+=======
+    this.handleRatingChange = this.handleRatingChange.bind(this);
+    this.handleUserChange = this.handleUserChange.bind(this);
+    this.handlePubChange = this.handlePubChange.bind(this);
+>>>>>>> develop
     // this.handleSubmit = this.handleSubmit.bind(this);
   };
 
@@ -25,7 +31,27 @@ class ReviewForm extends Component {
 
   handleTextChange(event){
     const inputText = event.target.value;
-    this.setState({review: inputText})
+    this.setState({text: inputText})
+  }
+
+  handleDateChange(event){
+    const inputText = event.target.value;
+    this.setState({date: inputText})
+  }
+
+  handleRatingChange(event){
+    const input = event.target.value;
+    this.setState({rating: input})
+  }
+
+  handleUserChange(event){
+    const input = event.target.value;
+    this.setState({user: input})
+  }
+
+  handlePubChange(event){
+    const input = event.target.value;
+    this.setState({pub: input})
   }
 
   handleDateChange(event){
@@ -39,9 +65,13 @@ class ReviewForm extends Component {
 
   handleSubmit(event){
     event.preventDefault();
+<<<<<<< HEAD
     const {user, pub, image, review, overall, date} = this.state;
+=======
+    const {user, pub, image, text, rating, date} = this.state;
+>>>>>>> develop
 
-    if (!user || !pub || !overall) {
+    if (!user || !pub || !rating) {
       return;
     }
 
@@ -49,12 +79,21 @@ class ReviewForm extends Component {
       user: user,
       pub: pub,
       image: image,
+<<<<<<< HEAD
       review: review,
       overall: overall,
       date: date
     };
     this.props.handleReviewSubmit(newReview);
     this.setState({user: "", pub: "", image: "", review: "", overall: "", date: ""});
+=======
+      text: text,
+      rating: rating,
+      date: date
+    };
+    this.props.handleReviewSubmit(newReview);
+    this.setState({user: "", pub: "", image: "", text: "", rating: "", date: ""});
+>>>>>>> develop
   }
 
 
@@ -77,12 +116,12 @@ class ReviewForm extends Component {
 
         <div className="form-item">
           <label>Select User</label>
-          <select name="user">
+          <select name="user" onChange={this.handleUserChange}>
               {allUsers}
           </select>
         </div>
 
-        <div className="form-item">
+        <div className="form-item" onChange={this.handlePubChange}>
           <label>Select Pub</label>
           <select name="pub">
               {allPubs}
@@ -99,12 +138,23 @@ class ReviewForm extends Component {
           />
         </div>
 
+        <div className="form-item">
+          <label>Date reviewed:</label>
+          <input
+            type="text"
+            placeholder="Enter date here"
+            value={this.state.date}
+            onChange={this.handleDateChange}
+          />
+        </div>
+
 
         <div className="form-item">
           <label>Overall rating:</label>
-          <input id="rating" type="number" min="0" max="10"/>
+          <input id="rating" type="number" min="0" max="10" onChange={this.handleRatingChange}/>
         </div>
 
+<<<<<<< HEAD
         <div className="form-item">
           <label>Data:</label>
           <input
@@ -114,6 +164,9 @@ class ReviewForm extends Component {
             onChange={this.handleDateChange}
           />
         </div>
+=======
+
+>>>>>>> develop
 
 
         <div className="form-item">
@@ -123,7 +176,7 @@ class ReviewForm extends Component {
             rows="6"
             columns="10"
             placeholder="Enter review here"
-            value={this.state.review}
+            value={this.state.text}
             onChange={this.handleTextChange}
             >
           </textarea>
