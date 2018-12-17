@@ -21,6 +21,10 @@ public class Review {
     @Column(name = "date")
     private String date;
 
+    @Column(name = "image")
+    private String image;
+
+
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -31,10 +35,11 @@ public class Review {
     @JoinColumn(name = "pub_id", nullable = false)
     private Pub pub;
 
-    public Review(int rating, String text, String date, User user, Pub pub) {
+    public Review(int rating, String text, String date, String image, User user, Pub pub) {
         this.rating = rating;
         this.text = text;
         this.date = date;
+        this.image = image;
         this.user = user;
         this.pub = pub;
     }
