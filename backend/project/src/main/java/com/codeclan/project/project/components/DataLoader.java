@@ -61,7 +61,11 @@ public class DataLoader implements ApplicationRunner {
             Pub pub5 = new Pub("The Merlin", 3.8, 55.929056, -3.210270);
             pubRepository.save(pub5);
 
-            Review review1 = new Review(10, "Head: Monica Lewinsky, Carbonation: Roy Keane, away to Juventus in ‘99; volatile, Vessel: 10/10, Tide lines: artic shelf, Taste: 10/10", "12.12.2018", "https://media-cdn.tripadvisor.com/media/photo-s/0d/1b/54/39/pint-of-tennents-at-the.jpg", user2, pub1);
+            Review review1 = new Review(10, "Head: 8/10\n" +
+                    "Carbonation: 10/10 \n" +
+                    "Vessel: 10/10\n" +
+                    "Tide lines: well proven\n" +
+                    "Taste: 10/10", "12.12.2018", "https://media-cdn.tripadvisor.com/media/photo-s/0d/1b/54/39/pint-of-tennents-at-the.jpg", user2, pub1);
             reviewRepository.save(review1);
             Review review2 = new Review( 9, "Excellent taste, great carbonation. Superb 9 all round", "01.12.2018", "https://scontent-ams3-1.xx.fbcdn.net/v/t1.0-9/48260340_10155756156351481_3865223335197540352_n.jpg?_nc_cat=105&_nc_ht=scontent-ams3-1.xx&oh=9d54eeeb7b4fbaed0c85566c0bf7fc78&oe=5CA54E77", user1, pub2);
             reviewRepository.save(review2);
