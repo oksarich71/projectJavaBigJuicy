@@ -42,12 +42,12 @@ class ReviewForm extends Component {
   }
 
   handleUserChange(event){
-    const input = event.target.value;
-    this.setState({user: input})
+    const actualUser = this.props.users[event.target.value]
+    this.setState({user: actualUser})
   }
 
   handlePubChange(event){
-    const input = event.target.value;
+    const input = this.props.pubs[event.target.value];
     this.setState({pub: input})
   }
 
@@ -60,8 +60,10 @@ class ReviewForm extends Component {
   handleSubmit(event){
     event.preventDefault();
     const {user, pub, image, text, rating, date} = this.state;
+    console.log("THIS DOT STATE IS:", this.state);
 
     if (!user || !pub || !rating) {
+      console.log("something wrong in reviewform submit");
       return;
     }
 
@@ -82,11 +84,12 @@ class ReviewForm extends Component {
   render(){
 
     const allUsers = this.props.users.map((user, index) => {
-      return <option key={index} value={user}>{user.name}</option>
+      return <option key={index} value={index}>{user.name}</option>
     })
 
+
     const allPubs = this.props.pubs.map((pub, index) => {
-      return <option key={index} value={pub}>{pub.name}</option>
+      return <option key={index} value={index}>{pub.name}</option>
     })
 
 

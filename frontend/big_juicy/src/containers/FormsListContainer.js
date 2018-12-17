@@ -35,6 +35,10 @@ class FormsListContainer extends Component {
     .then(() => {
       this.componentDidMount();
     })
+    .then(() => {
+      const rlc = new ReviewListContainer();
+      rlc.componentDidMount();
+    })
     // .then make sure its added or something
     //maybe show a <p> review added! </p> or something
   }
@@ -54,10 +58,6 @@ class FormsListContainer extends Component {
     req.post('http://localhost:8080/api/pubs', pub)
     .then(() => {
       this.componentDidMount();
-    })
-    .then(() => {
-      console.log("now calling reviewlistcontainer didmount method");
-      ReviewListContainer.componentDidMount();
     })
     //better make sure I can make multiple post requests
     //maybe show a <p> pub added! </p> or something
