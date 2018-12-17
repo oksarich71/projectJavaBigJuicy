@@ -7,13 +7,14 @@ class ReviewForm extends Component {
       user: "",
       pub: "",
       image: "",
-      review: "",
-      overall: "",
-      price: ""
+      text: "",
+      rating: "",
+      date: ""
 
     };
     this.handleImageTextChange = this.handleImageTextChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
     // this.handleSubmit = this.handleSubmit.bind(this);
   };
 
@@ -24,7 +25,12 @@ class ReviewForm extends Component {
 
   handleTextChange(event){
     const inputText = event.target.value;
-    this.setState({review: inputText})
+    this.setState({text: inputText})
+  }
+
+  handleDateChange(event){
+    const inputText = event.target.value;
+    this.setState({date: inputText})
   }
 
   //i dont curently have a handleRatingChange
@@ -33,9 +39,9 @@ class ReviewForm extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    const {user, pub, image, review, overall, price} = this.state;
+    const {user, pub, image, text, rating, date} = this.state;
 
-    if (!user || !pub || !overall) {
+    if (!user || !pub || !rating) {
       return;
     }
 
@@ -43,12 +49,12 @@ class ReviewForm extends Component {
       user: user,
       pub: pub,
       image: image,
-      review: review,
-      overall: overall,
-      price: price
+      text: text,
+      rating: rating,
+      date: date
     };
     this.props.handleReviewSubmit(newReview);
-    this.setState({user: "", pub: "", image: "", review: "", overall: "", price: ""});
+    this.setState({user: "", pub: "", image: "", text: "", rating: "", date: ""});
   }
 
 
@@ -93,13 +99,23 @@ class ReviewForm extends Component {
           />
         </div>
 
+        <div className="form-item">
+          <label>Date reviewed:</label>
+          <input
+            type="text"
+            placeholder="Enter date here"
+            value={this.state.date}
+            onChange={this.handleDateChange}
+          />
+        </div>
+
 
         <div className="form-item">
           <label>Overall rating:</label>
           <input id="rating" type="number" min="0" max="10"/>
         </div>
 
-        
+
 
 
         <div className="form-item">
@@ -109,7 +125,7 @@ class ReviewForm extends Component {
             rows="6"
             columns="10"
             placeholder="Enter review here"
-            value={this.state.review}
+            value={this.state.text}
             onChange={this.handleTextChange}
             >
           </textarea>
