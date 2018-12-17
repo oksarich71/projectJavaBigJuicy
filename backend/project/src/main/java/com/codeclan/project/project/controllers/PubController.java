@@ -20,7 +20,7 @@ public class PubController {
         return pubRepository.findAll();
     }
 
-    @GetMapping(value = "/review/{id}")
+//    @GetMapping(value = "/review/{id}")
     public List<Review> getAllReviewsForPub(@PathVariable Long id){
         return pubRepository.getAllReviewsForPub(id);
     }
