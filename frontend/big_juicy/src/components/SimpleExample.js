@@ -13,12 +13,14 @@ export default class SimpleExample extends Component<{}, State> {
   state = {
     lat: 55.945691,
     lng: -3.203956,
-    zoom: 12
+    zoom: 12,
+    render: false,
+    markers: []
   }
 
 
 
-  getMarkers() {
+  componentDidMount() {
     const arrayOfMarkers = [];
     const arrayOfPubs = [];
     let arrayOfActualPubs = [];
@@ -45,14 +47,36 @@ export default class SimpleExample extends Component<{}, State> {
       </Marker>
     ))
     console.log("array of markers is", arrayOfMarkers);
+    console.log("leafletmarkers is", LeafletMarkers);
+    this.setState({markers: LeafletMarkers})
+    this.setState({render: true})
   })
   }
 
 
   render() {
     const position = [this.state.lat, this.state.lng]
-    const markers = this.getMarkers()
-    console.log("markers is", markers);
+    console.log("this is this.state.markers", this.state.markers);
+      return (
+        <div className="another-map-container">
+        <Map className="this-is-map" center={position} zoom={this.state.zoom}>
+          <TileLayer
+            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {/* <style rel="stylesheet" href="http:/unpkg.com/leaflet@1.3.4/dist/leaflet.css"</link> */}
+          <style>@import url('http:/unpkg.com/leaflet@1.3.4/dist/leaflet.css')</style>
+          <Marker position={position}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+          </Marker>
+          {this.state.markers}
+        </Map>
+      </div>
+    )
+
+    // console.log("markers is", markers);
 
     // const LeafletMarkers = markers.map(marker => (
     //   <Marker position={marker.latlng} key={`marker_${marker.name}`}>
@@ -61,23 +85,7 @@ export default class SimpleExample extends Component<{}, State> {
     //     </Popup>
     //   </Marker>
     // ))
-    return (
-      <div className="another-map-container">
-      <Map className="this-is-map" center={position} zoom={this.state.zoom}>
-        <TileLayer
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {/* <style rel="stylesheet" href="http:/unpkg.com/leaflet@1.3.4/dist/leaflet.css"</link> */}
-        <style>@import url('http:/unpkg.com/leaflet@1.3.4/dist/leaflet.css')</style>
-        <Marker position={position}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
-      </Map>
-    </div>
-    )
+
   }
 }
 
