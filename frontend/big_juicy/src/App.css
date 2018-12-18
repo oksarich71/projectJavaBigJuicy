@@ -17,6 +17,15 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.map-child-component {
+  border: 3px solid yellow;
+  height: 480px;
+
+}
+
+.another-map-container {
+  border: 3px solid salmon;
+}
 
 .App-link {
   color: #61dafb;
@@ -68,4 +77,11 @@ textarea {
 .review-image {
   width: 200px;
   height: auto;
+}
+
+.this-is-map {
+  width: 850px;
+  height: 400px;
+  border: 3px solid green;
+  display: grid;
 }
