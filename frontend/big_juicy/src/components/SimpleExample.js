@@ -15,7 +15,8 @@ export default class SimpleExample extends Component<{}, State> {
     lng: -3.203956,
     zoom: 12,
     render: false,
-    markers: []
+    markers: [],
+    testMarkers: {latlng: {lat: 55.945691, lng: -3.203956}, name: "testPub"}
   }
 
 
@@ -50,8 +51,11 @@ export default class SimpleExample extends Component<{}, State> {
     console.log("leafletmarkers is", LeafletMarkers);
     this.setState({markers: LeafletMarkers})
     this.setState({render: true})
+    this.render();
   })
   }
+
+
 
 
   render() {
@@ -66,12 +70,11 @@ export default class SimpleExample extends Component<{}, State> {
           />
           {/* <style rel="stylesheet" href="http:/unpkg.com/leaflet@1.3.4/dist/leaflet.css"</link> */}
           <style>@import url('http:/unpkg.com/leaflet@1.3.4/dist/leaflet.css')</style>
-          <Marker position={position}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-          </Marker>
-          {this.state.markers}
+          // <Marker position={position}>
+          // </Marker>
+          // <Marker position={this.state.testMarkers.latlng}>
+          // </Marker>
+          <Marker position={[55.945691, -3.203956]}></Marker>
         </Map>
       </div>
     )
