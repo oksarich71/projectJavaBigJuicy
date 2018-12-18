@@ -19,6 +19,7 @@ public class ReviewController {
 
     @PostMapping(value = "/reviews")
     Review newReview(@RequestBody Review newReview){
+        System.out.println(newReview);
         return reviewRepository.save(newReview);
     }
 

@@ -1,6 +1,7 @@
 package com.codeclan.project.project.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -25,12 +26,12 @@ public class Review {
     private String image;
 
 
-    @JsonIgnore
+    @JsonIgnoreProperties("reviews")
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @JsonIgnore
+    @JsonIgnoreProperties("reviews")
     @ManyToOne
     @JoinColumn(name = "pub_id", nullable = false)
     private Pub pub;
