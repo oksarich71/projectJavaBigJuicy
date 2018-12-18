@@ -6,6 +6,7 @@ import com.codeclan.project.project.models.User;
 import com.codeclan.project.project.repositories.PubRepository.PubRepository;
 import com.codeclan.project.project.repositories.ReviewRepository.ReviewRepository;
 import com.codeclan.project.project.repositories.UserRepository.UserRepository;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class ProjectApplicationTests {
 	PubRepository pubRepository;
 	@Autowired
 	ReviewRepository reviewRepository;
+
 
 	@Test
 	public void contextLoads() {
@@ -68,6 +70,18 @@ public class ProjectApplicationTests {
 	public void canGetAllReviewsForDate(){
 		List<Review> found = reviewRepository.getAllReviewsForDate("01.12.2018");
 		assertEquals(2, found.size());
+	}
+
+	@Test
+	public void canSaveReview(){
+		Pub pub1 = new Pub("pub name", 3.5, 55.60, -3.4);
+		pubRepository.save(pub1);
+		User user1 = new User("iain");
+		userRepository.save(user1);
+		Review review1 = new Review(4, "bad pint", "01.12.2018", "image url here", user1, pub1 );
+		reviewRepository.save(review1);
+		List<Review> found = reviewRepository.getAllReviewsForDate("01.12.2018");
+		assertEquals(3, found.size());
 	}
 
 
