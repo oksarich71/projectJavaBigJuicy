@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import Request from '../helpers/Request.js';
+
 
 type State = {
   lat: number,
@@ -14,8 +16,33 @@ export default class SimpleExample extends Component<{}, State> {
     zoom: 12
   }
 
+
+
+  getMarkers() {
+    const arrayOfMarkers = [];
+    const arrayOfPubs = [];
+    let req = new Request()
+    req.get("http://localhost:8080/api/pubs").then((data) => {
+      const arrayOfPubs = data._embedded.pubs
+    }).then(() => {
+      arrayOfPubs.forEach((pub) => {
+        const pubObject = {name: pub.name, latlng: [pub.latitude, pub.longitude]}
+        arrayOfMarkers.push(pubObject);
+      })
+    }).then(()=> {return arrayOfMarkers})
+  }
+
   render() {
     const position = [this.state.lat, this.state.lng]
+    const markers = this.getMarkers()
+
+    const LeafletMarkers = markers.map(marker => (
+      <Marker position={marker.latlng} key={`marker_${marker.name}`}>
+        <Popup>
+          <span>{marker.name}</span>
+        </Popup>
+      </Marker>
+    ))
     return (
       <div className="another-map-container">
       <Map className="this-is-map" center={position} zoom={this.state.zoom}>

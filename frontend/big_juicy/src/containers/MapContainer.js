@@ -8,6 +8,18 @@ class MapContainer extends Component {
     super(props);
       this.state = {map: []}
     }
+
+  
+
+  onDataLoaded(){
+    //when page loads
+    //make a get request for all the pubs
+    //loop through pubs and call SimpleExample.addDataPoint(lat, long)
+
+    //create array of data points
+    //set array of data points to be this.state.points
+    //make sure render function takes this array
+  }
 //
 //     // componentDidMount(){
 //     //   //this happens when the page is laoded
