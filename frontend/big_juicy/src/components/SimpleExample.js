@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Map, TileLayer, Marker, Popup } from 'reactLeaflet';
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
 type State = {
   lat: number,
