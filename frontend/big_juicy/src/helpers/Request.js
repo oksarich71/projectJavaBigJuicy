@@ -7,6 +7,8 @@ class Request {
 
   post(url, payload){
     console.log("payload is:", payload);
+    let data = JSON.stringify(payload);
+    console.log(data);
     return fetch(url, {
       method: "POST",
       headers: {'Content-Type': 'application/json'},

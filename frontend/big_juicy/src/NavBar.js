@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import ReviewPage from './pages/ReviewPage.js';
 import HomePage from './pages/HomePage.js';
+import MapPage from './pages/MapPage.js';
 
 const NavBar = (props) => {
   return (
@@ -18,7 +19,7 @@ const NavBar = (props) => {
           </li>
 
           <li className="nav-bar-item">
-            <p>Map</p>
+            <Link to="/map">Map</Link>
           </li>
 
           <li className="nav-bar-item">
@@ -32,6 +33,7 @@ const NavBar = (props) => {
         </ul>
         <Route exact path="/" component={HomePage} />
         <Route path="/reviews" component={ReviewPage} />
+        <Route path="/map" component={MapPage} />
       </Fragment>
     </Router>
   )
