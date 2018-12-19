@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import Request from '../helpers/Request.js';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
 
 type State = {
@@ -32,10 +34,11 @@ export default class SimpleExample extends Component<{}, State> {
       arrayOfPubs.forEach((isItAPub) => {
         const maybeAPub = isItAPub.reviews[0].pub
         arrayOfActualPubs.push(maybeAPub)
+        console.log("maybe a pub:", maybeAPub);
       })
     }).then(() => {
       arrayOfActualPubs.forEach((pub) => {
-        const pubObject = {name: pub.name, latlng: [pub.latitude, pub.longitude]}
+        const pubObject = {name: pub.name, latlng: [pub.latitude, pub.longitude], price: pub.price}
         arrayOfMarkers.push(pubObject);
       })
     // }).then(()=> {return arrayOfMarkers})
@@ -43,7 +46,7 @@ export default class SimpleExample extends Component<{}, State> {
     const LeafletMarkers = arrayOfMarkers.map(marker => (
       <Marker position={marker.latlng} key={`marker_${marker.name}`}>
         <Popup>
-          <span>{marker.name}</span>
+          <span>{marker.name} <br /> £{marker.price}0 a pint</span>
         </Popup>
       </Marker>
     ))
@@ -54,6 +57,7 @@ export default class SimpleExample extends Component<{}, State> {
     this.render();
   })
   }
+
 
 
 
@@ -74,78 +78,19 @@ export default class SimpleExample extends Component<{}, State> {
           // </Marker>
           // <Marker position={this.state.testMarkers.latlng}>
           // </Marker>
-          <Marker position={[55.945691, -3.203956]}></Marker>
+
+          // <Marker position={[55.945691, -3.203956]} img="../../public/favicon.ico">
+          //   <Popup>
+          //   A pretty CSS3 popup. <br /> Easily customizable.
+          //   </Popup>
+          // </Marker>
+          <div className="markers here">
+            {this.state.markers}
+          </div>
         </Map>
       </div>
     )
 
-    // console.log("markers is", markers);
-
-    // const LeafletMarkers = markers.map(marker => (
-    //   <Marker position={marker.latlng} key={`marker_${marker.name}`}>
-    //     <Popup>
-    //       <span>{marker.name}</span>
-    //     </Popup>
-    //   </Marker>
-    // ))
 
   }
 }
-
-//
-// //
-// import React from 'react'
-// import { render } from 'react-dom'
-// import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
-// import 'leaflet/dist/leaflet.css';
-//
-// class SimpleExample extends Component<{}, State> {
-//
-//
-// const position = [51.505, -0.09];
-// const map = (
-//   <Map center={position} zoom={13}>
-//     <TileLayer
-//       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-//       attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-//     />
-//     <Marker position={position}>
-//       <Popup>A pretty CSS3 popup.<br />Easily customizable.</Popup>
-//     </Marker>
-//   </Map>
-// )
-// }
-
-//
-// // export default
-// import React from "react";
-// import { Map, TileLayer, Marker, Popup } from "react-leaflet";
-
-// import L from 'leaflet';
-//
-// delete L.Icon.Default.prototype._getIconUrl;
-//
-// L.Icon.Default.mergeOptions({
-//     iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-//     iconUrl: require('leaflet/dist/images/marker-icon.png'),
-//     shadowUrl: require('leaflet/dist/images/marker-shadow.png')
-// });
-//
-//
-// const SimpleExample = (props) => {
-//     return (
-//         <Map center={props.position} zoom={props.zoom} style={{height: '350px'}}>
-//           <TileLayer
-//             attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-//             url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"
-//           />
-//           <Marker position={props.center}>
-//             <Popup>
-//               A pretty CSS3 popup. <br /> Easily customizable.
-//             </Popup>
-//           </Marker>
-//         </Map>
-//     )
-// }
-
-// export default SimpleExample;
