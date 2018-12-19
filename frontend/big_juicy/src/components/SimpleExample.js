@@ -72,8 +72,19 @@ export default class SimpleExample extends Component<{}, State> {
     })
   // }).then(()=> {return arrayOfMarkers})
 }).then(() => {
+  
+    const image = new L.Icon({
+                 iconUrl: require('../images/marker-icon.png'),
+                 shadowUrl: require('../images/marker-shadow.png'),
+                 iconSize:     [30, 60], // size of the icon
+                 shadowSize:   [50, 64], // size of the shadow
+                 iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+                 shadowAnchor: [4, 62],  // the same for the shadow
+                 popupAnchor:  [-3, -76]// point from which the popup should open relative to the iconAnchor
+             })
+
   const LeafletMarkers = arrayOfMarkers.map(marker => (
-    <Marker position={marker.latlng} key={`marker_${marker.name}`}>
+    <Marker icon={image} position={marker.latlng} key={`marker_${marker.name}`}>
       <Popup>
         <span>
           {marker.name}

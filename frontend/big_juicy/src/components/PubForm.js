@@ -3,10 +3,11 @@ import React, {Component} from 'react';
 class PubForm extends Component {
   constructor(props){
     super(props);
-    this.state = {name: ""};
-    this.state = {price: ""};
+    this.state = {name: "", price: "", lat: "", long: ""};
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handlePriceChange = this.handlePriceChange.bind(this);
+    // this.handleLatChange = this.handleLatChange.bind(this);
+    // this.handleLongChange = this.handleLongChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
@@ -19,17 +20,29 @@ class PubForm extends Component {
     this.setState({price: inputPrice})
   }
 
+  handleLatChange(event){
+    const input = event.target.value;
+    this.setState({lat: input})
+  }
+
+  handleLongChange(event){
+    const input = event.target.value;
+    this.setState({long: input})
+  }
+
   handleSubmit(event){
     event.preventDefault();
-    const {name, price} = this.state;
+    const {name, price, lat, long} = this.state;
 
-    if (!name || !price) {
+    if (!name || !price || !lat || !long) {
       return;
     }
 
     const newPub = {
       name: name,
-      price: price
+      price: price,
+      // latitude: lat,
+      // longitude: long
     };
     this.props.handlePubSubmit(newPub);
     this.setState({name: "", price: ""});
@@ -49,15 +62,19 @@ class PubForm extends Component {
           onChange={this.handleTextChange}
         />
         </div>
+
         <div className="form-item">
           <label>Price:</label>
-        <input
-          type="double"
-          placeholder="enter pint's price"
-          value={this.state.price}
-          onChange={this.handlePriceChange}
-        />
-      </div>
+          <input
+            type="double"
+            placeholder="enter pint's price"
+            value={this.state.price}
+            onChange={this.handlePriceChange}
+            />
+        </div>
+
+
+
         <input
           type="submit"
           value="Post"
@@ -68,3 +85,23 @@ class PubForm extends Component {
 }
 
 export default PubForm;
+
+// <div className="form-item">
+//   <label>Latitude:</label>
+//   <input
+//     type="double"
+//     placeholder="55.9"
+//     value={this.state.lat}
+//     onChange={this.handleLatChange}
+//     />
+// </div>
+//
+// <div className="form-item">
+//   <label>Longitude:</label>
+//   <input
+//     type="double"
+//     placeholder="-3.2"
+//     value={this.state.long}
+//     onChange={this.handleLongChange}
+//     />
+// </div>
