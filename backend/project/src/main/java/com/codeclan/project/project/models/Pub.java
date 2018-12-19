@@ -1,6 +1,7 @@
 package com.codeclan.project.project.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ import java.util.List;
         @Column(name = "longitude")
         private double longitude;
 
-    @JsonIgnore
+    @JsonIgnoreProperties("pubs")
     @OneToMany(mappedBy = "pub", fetch = FetchType.LAZY)
     private List<Review> reviews;
 

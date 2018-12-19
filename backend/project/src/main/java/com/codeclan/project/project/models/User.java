@@ -1,6 +1,7 @@
 package com.codeclan.project.project.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import java.util.List;
         @Column(name = "name")
         private String name;
 
-    @JsonIgnore
+    @JsonIgnoreProperties("users")
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Review> reviews;
 
