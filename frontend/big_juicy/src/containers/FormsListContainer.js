@@ -30,14 +30,13 @@ class FormsListContainer extends Component {
 
   handleReviewSubmit(review){
     const req = new Request();
-    console.log("this is the review:", review);
     req.post('http://localhost:8080/api/reviews', review)
     .then(() => {
       this.componentDidMount();
     })
     .then(() => {
       const rlc = new ReviewListContainer();
-      rlc.componentDidMount();
+      rlc.populate();
     })
     // .then make sure its added or something
     //maybe show a <p> review added! </p> or something

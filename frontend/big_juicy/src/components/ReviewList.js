@@ -23,13 +23,14 @@ const ReviewList = (props) => {
     //we submit a review, it is saved to the api, we get all reviews from the api
     //we want the most recent review to be at the top
   })
+  const backwardsArrayOfReviews = arrayOfReviews.reverse();
 
   return (
     <div className="review-thingy">
 
       <h2>Here is where all the reviews will be listed:</h2>
 
-      {arrayOfReviews}
+      {backwardsArrayOfReviews}
 
     </div>
   )

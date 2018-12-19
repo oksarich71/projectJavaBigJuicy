@@ -43,12 +43,12 @@ class ReviewForm extends Component {
 
   handleUserChange(event){
     const actualUser = this.props.users[event.target.value]
-    this.setState({user: actualUser})
+    this.setState({user: actualUser.id})
   }
 
   handlePubChange(event){
     const input = this.props.pubs[event.target.value];
-    this.setState({pub: input})
+    this.setState({pub: input.id})
   }
 
   handleDateChange(event){
@@ -60,7 +60,6 @@ class ReviewForm extends Component {
   handleSubmit(event){
     event.preventDefault();
     const {user, pub, image, text, rating, date} = this.state;
-    console.log("THIS DOT STATE IS:", this.state);
 
     if (!user || !pub || !rating) {
       console.log("something wrong in reviewform submit");
@@ -68,8 +67,8 @@ class ReviewForm extends Component {
     }
 
     const newReview = {
-      user: user,
-      pub: pub,
+      user: "http://localhost:8080/api/users/" + user,
+      pub: "http://localhost:8080/api/pubs/" + pub,
       image: image,
       text: text,
       rating: rating,
