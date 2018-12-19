@@ -44,9 +44,9 @@ class FormsListContainer extends Component {
 
   handleReviewSubmit(review){
     const req = new Request();
-    console.log("this is the review:", review);
-    review.pub = review.pub._links.self.href;
-    review.user = review.user._links.self.href;
+    // console.log("this is the review:", review);
+    // review.pub = review.pub._links.self.href;
+    // review.user = review.user._links.self.href;
     req.post('http://localhost:8080/api/reviews', review)
     .then(() => {
       this.populate();

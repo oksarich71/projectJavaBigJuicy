@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import Request from '../helpers/Request.js';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
 
 type State = {
@@ -26,41 +28,88 @@ export default class SimpleExample extends Component<{}, State> {
     const arrayOfPubs = [];
     let arrayOfActualPubs = [];
 
-    let req = new Request()
-    req.get("http://localhost:8080/api/pubs").then((data) => {
-      const arrayOfPubs = data._embedded.pubs
-      arrayOfPubs.forEach((isItAPub) => {
-        const maybeAPub = isItAPub.reviews[0].pub
-        arrayOfActualPubs.push(maybeAPub)
-      })
-    }).then(() => {
-      arrayOfActualPubs.forEach((pub) => {
-        const pubObject = {name: pub.name, latlng: [pub.latitude, pub.longitude]}
-        arrayOfMarkers.push(pubObject);
-      })
-    // }).then(()=> {return arrayOfMarkers})
+  //   let req = new Request()
+  //   req.get("http://localhost:8080/api/pubs").then((data) => {
+  //     const arrayOfPubs = data._embedded.pubs
+  //     arrayOfPubs.forEach((isItAPub) => {
+  //       const maybeAPub = isItAPub.reviews[0].pub
+  //       arrayOfActualPubs.push(maybeAPub)
+  //       console.log("maybe a pub:", maybeAPub);
+  //     })
+  //   }).then(() => {
+  //     arrayOfActualPubs.forEach((pub) => {
+  //       const pubObject = {name: pub.name, latlng: [pub.latitude, pub.longitude], price: pub.price}
+  //       arrayOfMarkers.push(pubObject);
+  //     })
+  //   // }).then(()=> {return arrayOfMarkers})
+  // }).then(() => {
+  //   const LeafletMarkers = arrayOfMarkers.map(marker => (
+  //     <Marker position={marker.latlng} key={`marker_${marker.name}`}>
+  //       <Popup>
+  //         <span>{marker.name} <br /> £{marker.price}0 a pint</span>
+  //       </Popup>
+  //     </Marker>
+  //   ))
+  //   console.log("array of markers is", arrayOfMarkers);
+  //   console.log("leafletmarkers is", LeafletMarkers);
+  //   this.setState({markers: LeafletMarkers})
+  //   this.setState({render: true})
+  //   this.render();
+  // })
+  // }
+
+  let req = new Request()
+  req.get("http://localhost:8080/api/pubs").then((data) => {
+    const arrayOfPubs = data._embedded.pubs
+    arrayOfPubs.forEach((isItAPub) => {
+      const newPubObject = {name: isItAPub.reviews[0].pub.name, latlng: [isItAPub.reviews[0].pub.latitude, isItAPub.reviews[0].pub.longitude], price: isItAPub.reviews[0].pub.price, reviews: isItAPub.reviews, pubID: isItAPub.id}
+      arrayOfActualPubs.push(newPubObject)
+    })
   }).then(() => {
-    const LeafletMarkers = arrayOfMarkers.map(marker => (
-      <Marker position={marker.latlng} key={`marker_${marker.name}`}>
-        <Popup>
-          <span>{marker.name}</span>
-        </Popup>
-      </Marker>
-    ))
-    console.log("array of markers is", arrayOfMarkers);
-    console.log("leafletmarkers is", LeafletMarkers);
-    this.setState({markers: LeafletMarkers})
-    this.setState({render: true})
-    this.render();
-  })
-  }
+    arrayOfActualPubs.forEach((pub) => {
+      const pubObject = {name: pub.name, latlng: pub.latlng, price: pub.price, reviews: pub.reviews, id: pub.pubID}
+      arrayOfMarkers.push(pubObject);
+    })
+  // }).then(()=> {return arrayOfMarkers})
+}).then(() => {
+  
+    const image = new L.Icon({
+                 iconUrl: require('../images/marker-icon.png'),
+                 shadowUrl: require('../images/marker-shadow.png'),
+                 iconSize:     [30, 60], // size of the icon
+                 shadowSize:   [50, 64], // size of the shadow
+                 iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+                 shadowAnchor: [4, 62],  // the same for the shadow
+                 popupAnchor:  [-3, -76]// point from which the popup should open relative to the iconAnchor
+             })
+
+  const LeafletMarkers = arrayOfMarkers.map(marker => (
+    <Marker icon={image} position={marker.latlng} key={`marker_${marker.name}`}>
+      <Popup>
+        <span>
+          {marker.name}
+          <br />
+          £{marker.price}0 a pint
+          <br />
+          pub id is: {marker.id}
+          <br />
+          <a href="http://localhost:8080/api/pubs/`${marker.id}`">Click here for all reviews for this pub!</a>
+        </span>
+      </Popup>
+    </Marker>
+  ))
+  this.setState({markers: LeafletMarkers})
+  this.setState({render: true})
+  this.render();
+})
+}
+
 
 
 
 
   render() {
     const position = [this.state.lat, this.state.lng]
-    console.log("this is this.state.markers", this.state.markers);
       return (
         <div className="another-map-container">
         <Map className="this-is-map" center={position} zoom={this.state.zoom}>
@@ -74,78 +123,19 @@ export default class SimpleExample extends Component<{}, State> {
           // </Marker>
           // <Marker position={this.state.testMarkers.latlng}>
           // </Marker>
-          <Marker position={[55.945691, -3.203956]}></Marker>
+
+          // <Marker position={[55.945691, -3.203956]} img="../../public/favicon.ico">
+          //   <Popup>
+          //   A pretty CSS3 popup. <br /> Easily customizable.
+          //   </Popup>
+          // </Marker>
+          <div className="markers here">
+            {this.state.markers}
+          </div>
         </Map>
       </div>
     )
 
-    // console.log("markers is", markers);
-
-    // const LeafletMarkers = markers.map(marker => (
-    //   <Marker position={marker.latlng} key={`marker_${marker.name}`}>
-    //     <Popup>
-    //       <span>{marker.name}</span>
-    //     </Popup>
-    //   </Marker>
-    // ))
 
   }
 }
-
-//
-// //
-// import React from 'react'
-// import { render } from 'react-dom'
-// import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
-// import 'leaflet/dist/leaflet.css';
-//
-// class SimpleExample extends Component<{}, State> {
-//
-//
-// const position = [51.505, -0.09];
-// const map = (
-//   <Map center={position} zoom={13}>
-//     <TileLayer
-//       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-//       attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-//     />
-//     <Marker position={position}>
-//       <Popup>A pretty CSS3 popup.<br />Easily customizable.</Popup>
-//     </Marker>
-//   </Map>
-// )
-// }
-
-//
-// // export default
-// import React from "react";
-// import { Map, TileLayer, Marker, Popup } from "react-leaflet";
-
-// import L from 'leaflet';
-//
-// delete L.Icon.Default.prototype._getIconUrl;
-//
-// L.Icon.Default.mergeOptions({
-//     iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-//     iconUrl: require('leaflet/dist/images/marker-icon.png'),
-//     shadowUrl: require('leaflet/dist/images/marker-shadow.png')
-// });
-//
-//
-// const SimpleExample = (props) => {
-//     return (
-//         <Map center={props.position} zoom={props.zoom} style={{height: '350px'}}>
-//           <TileLayer
-//             attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-//             url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"
-//           />
-//           <Marker position={props.center}>
-//             <Popup>
-//               A pretty CSS3 popup. <br /> Easily customizable.
-//             </Popup>
-//           </Marker>
-//         </Map>
-//     )
-// }
-
-// export default SimpleExample;
