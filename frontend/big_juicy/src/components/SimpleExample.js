@@ -28,35 +28,70 @@ export default class SimpleExample extends Component<{}, State> {
     const arrayOfPubs = [];
     let arrayOfActualPubs = [];
 
-    let req = new Request()
-    req.get("http://localhost:8080/api/pubs").then((data) => {
-      const arrayOfPubs = data._embedded.pubs
-      arrayOfPubs.forEach((isItAPub) => {
-        const maybeAPub = isItAPub.reviews[0].pub
-        arrayOfActualPubs.push(maybeAPub)
-        console.log("maybe a pub:", maybeAPub);
-      })
-    }).then(() => {
-      arrayOfActualPubs.forEach((pub) => {
-        const pubObject = {name: pub.name, latlng: [pub.latitude, pub.longitude], price: pub.price}
-        arrayOfMarkers.push(pubObject);
-      })
-    // }).then(()=> {return arrayOfMarkers})
+  //   let req = new Request()
+  //   req.get("http://localhost:8080/api/pubs").then((data) => {
+  //     const arrayOfPubs = data._embedded.pubs
+  //     arrayOfPubs.forEach((isItAPub) => {
+  //       const maybeAPub = isItAPub.reviews[0].pub
+  //       arrayOfActualPubs.push(maybeAPub)
+  //       console.log("maybe a pub:", maybeAPub);
+  //     })
+  //   }).then(() => {
+  //     arrayOfActualPubs.forEach((pub) => {
+  //       const pubObject = {name: pub.name, latlng: [pub.latitude, pub.longitude], price: pub.price}
+  //       arrayOfMarkers.push(pubObject);
+  //     })
+  //   // }).then(()=> {return arrayOfMarkers})
+  // }).then(() => {
+  //   const LeafletMarkers = arrayOfMarkers.map(marker => (
+  //     <Marker position={marker.latlng} key={`marker_${marker.name}`}>
+  //       <Popup>
+  //         <span>{marker.name} <br /> £{marker.price}0 a pint</span>
+  //       </Popup>
+  //     </Marker>
+  //   ))
+  //   console.log("array of markers is", arrayOfMarkers);
+  //   console.log("leafletmarkers is", LeafletMarkers);
+  //   this.setState({markers: LeafletMarkers})
+  //   this.setState({render: true})
+  //   this.render();
+  // })
+  // }
+
+  let req = new Request()
+  req.get("http://localhost:8080/api/pubs").then((data) => {
+    const arrayOfPubs = data._embedded.pubs
+    arrayOfPubs.forEach((isItAPub) => {
+      const newPubObject = {name: isItAPub.reviews[0].pub.name, latlng: [isItAPub.reviews[0].pub.latitude, isItAPub.reviews[0].pub.longitude], price: isItAPub.reviews[0].pub.price, reviews: isItAPub.reviews, pubID: isItAPub.id}
+      arrayOfActualPubs.push(newPubObject)
+    })
   }).then(() => {
-    const LeafletMarkers = arrayOfMarkers.map(marker => (
-      <Marker position={marker.latlng} key={`marker_${marker.name}`}>
-        <Popup>
-          <span>{marker.name} <br /> £{marker.price}0 a pint</span>
-        </Popup>
-      </Marker>
-    ))
-    console.log("array of markers is", arrayOfMarkers);
-    console.log("leafletmarkers is", LeafletMarkers);
-    this.setState({markers: LeafletMarkers})
-    this.setState({render: true})
-    this.render();
-  })
-  }
+    arrayOfActualPubs.forEach((pub) => {
+      const pubObject = {name: pub.name, latlng: pub.latlng, price: pub.price, reviews: pub.reviews, id: pub.pubID}
+      arrayOfMarkers.push(pubObject);
+    })
+  // }).then(()=> {return arrayOfMarkers})
+}).then(() => {
+  const LeafletMarkers = arrayOfMarkers.map(marker => (
+    <Marker position={marker.latlng} key={`marker_${marker.name}`}>
+      <Popup>
+        <span>
+          {marker.name}
+          <br />
+          £{marker.price}0 a pint
+          <br />
+          pub id is: {marker.id}
+          <br />
+          <a href="http://localhost:8080/api/pubs/`${marker.id}`">Click here for all reviews for this pub!</a>
+        </span>
+      </Popup>
+    </Marker>
+  ))
+  this.setState({markers: LeafletMarkers})
+  this.setState({render: true})
+  this.render();
+})
+}
 
 
 
@@ -64,7 +99,6 @@ export default class SimpleExample extends Component<{}, State> {
 
   render() {
     const position = [this.state.lat, this.state.lng]
-    console.log("this is this.state.markers", this.state.markers);
       return (
         <div className="another-map-container">
         <Map className="this-is-map" center={position} zoom={this.state.zoom}>
