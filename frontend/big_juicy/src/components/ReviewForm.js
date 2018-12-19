@@ -72,7 +72,7 @@ class ReviewForm extends Component {
       pub: pub,
       image: image,
       text: text,
-      rating: rating,
+      rating: parseInt(rating),
       date: date
     };
     this.props.handleReviewSubmit(newReview);
@@ -99,21 +99,21 @@ class ReviewForm extends Component {
         <h3>Add a review:</h3>
 
         <div className="form-item">
-          <label>Select User</label>
+          <label className="button">Select User</label>
           <select name="user" onChange={this.handleUserChange}>
               {allUsers}
           </select>
         </div>
 
         <div className="form-item" onChange={this.handlePubChange}>
-          <label>Select Pub</label>
+          <label className="button">Select Pub</label>
           <select name="pub">
               {allPubs}
           </select>
         </div>
 
         <div className="form-item">
-          <label>Add image:</label>
+          <label className="button">Add image:</label>
           <input
             type="text"
             placeholder="Enter url"
@@ -123,7 +123,7 @@ class ReviewForm extends Component {
         </div>
 
         <div className="form-item">
-          <label>Date reviewed:</label>
+          <label className="button">Date reviewed:</label>
           <input
             type="text"
             placeholder="Enter date here"
@@ -134,7 +134,7 @@ class ReviewForm extends Component {
 
 
         <div className="form-item">
-          <label>Overall rating:</label>
+          <label className="button">Overall rating:</label>
           <input id="rating" type="number" min="0" max="10" onChange={this.handleRatingChange}/>
         </div>
 
@@ -157,7 +157,7 @@ class ReviewForm extends Component {
         <div className="form-item">
           <input
             type="submit"
-            value="Post"
+            value="Post" className="button"
           />
         </div>
 

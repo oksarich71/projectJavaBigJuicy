@@ -7,9 +7,11 @@ import NavBar from './NavBar.js';
 class App extends Component {
   render() {
     return (
+      <div className="body">
       <Fragment>
         <NavBar/>
       </Fragment>
+    </div>
 
     );
   }

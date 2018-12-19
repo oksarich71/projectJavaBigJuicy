@@ -8,25 +8,25 @@ const NavBar = (props) => {
   return (
     <Router>
       <Fragment>
-        <ul>
+        <ul className="nav-bar">
 
-          <li className="nav-bar-item">
-            <Link to="/">Welcome</Link>
+          <li className="nav">
+            <Link to="/" className="link">Welcome</Link>
           </li>
 
-          <li className="nav-bar-item">
-            <Link to="/reviews">Reviews</Link>
+          <li className="nav">
+            <Link to="/reviews" className="link">Reviews</Link>
           </li>
 
-          <li className="nav-bar-item">
-            <Link to="/map">Map</Link>
+          <li className="nav">
+            <Link to="/map" className="link">Map</Link>
           </li>
 
-          <li className="nav-bar-item">
+          <li className="nav">
             <p>My Reviews</p>
           </li>
 
-          <li className="nav-bar-item">
+          <li className="nav">
             <p>Saved Reviews</p>
           </li>
 

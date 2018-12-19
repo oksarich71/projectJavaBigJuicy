@@ -12,9 +12,23 @@ class FormsListContainer extends Component {
     this.handleReviewSubmit = this.handleReviewSubmit.bind(this);
     this.handlePubSubmit = this.handlePubSubmit.bind(this);
     this.handleUserSubmit = this.handleUserSubmit.bind(this);
+    this.populate = this.populate.bind(this);
   }
 
   componentDidMount(){
+    const req = new Request();
+    req.get("http://localhost:8080/api/pubs")
+    .then((data) => {
+      this.setState({pubs: data._embedded.pubs})
+    }).then(() => {
+      req.get("http://localhost:8080/api/users")
+      .then((data) => {
+        this.setState({users: data._embedded.users})
+      });
+    });
+  }
+
+  populate(){
     const req = new Request();
     req.get("http://localhost:8080/api/pubs")
     .then((data) => {
@@ -31,13 +45,15 @@ class FormsListContainer extends Component {
   handleReviewSubmit(review){
     const req = new Request();
     console.log("this is the review:", review);
+    review.pub = review.pub._links.self.href;
+    review.user = review.user._links.self.href;
     req.post('http://localhost:8080/api/reviews', review)
     .then(() => {
-      this.componentDidMount();
+      this.populate();
     })
     .then(() => {
       const rlc = new ReviewListContainer();
-      rlc.componentDidMount();
+      rlc.populate();
     })
     // .then make sure its added or something
     //maybe show a <p> review added! </p> or something
@@ -47,7 +63,7 @@ class FormsListContainer extends Component {
     const req = new Request();
     req.post('http://localhost:8080/api/users', user)
     .then(() => {
-      this.componentDidMount();
+      this.populate();
     })
     // better make sure I can make multiple post requests here
     //maybe show a <p> user added! </p> or something
@@ -57,7 +73,7 @@ class FormsListContainer extends Component {
     const req = new Request();
     req.post('http://localhost:8080/api/pubs', pub)
     .then(() => {
-      this.componentDidMount();
+      this.populate();
     })
     //better make sure I can make multiple post requests
     //maybe show a <p> pub added! </p> or something

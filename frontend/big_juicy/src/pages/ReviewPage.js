@@ -5,7 +5,7 @@ import ReviewListContainer from '../containers/ReviewListContainer.js';
 
 const ReviewPage = (props) => {
   return (
-    <div>
+    <div className="reviews">
       <h2>Reviews</h2>
       <FormsListContainer/>
       <ReviewListContainer/>

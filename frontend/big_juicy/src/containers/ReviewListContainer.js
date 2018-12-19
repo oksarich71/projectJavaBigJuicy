@@ -6,6 +6,7 @@ class ReviewListContainer extends Component {
   constructor(props){
     super(props);
     this.state = {reviews: []}
+    this.populate = this.populate.bind(this);
   }
 
 
@@ -17,6 +18,15 @@ class ReviewListContainer extends Component {
     this.setState({reviews: data._embedded.reviews})
     })
 
+  }
+
+  populate(){
+    let req = new Request()
+    console.log("didmount method has been called in reviewlistcontainer");
+    req.get('http://localhost:8080/api/reviews')
+    .then((data) => {
+    this.setState({reviews: data._embedded.reviews})
+  });
   }
 
   render(){
