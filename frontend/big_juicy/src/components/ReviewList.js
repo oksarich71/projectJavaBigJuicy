@@ -28,7 +28,7 @@ const ReviewList = (props) => {
   return (
     <div className="review-thingy">
 
-      <h2>Here is where all the reviews will be listed:</h2>
+      <h2></h2>
 
       {backwardsArrayOfReviews}
 
