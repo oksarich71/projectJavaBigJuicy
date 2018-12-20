@@ -71,14 +71,7 @@ public class DataLoader implements ApplicationRunner {
             pubRepository.save(pub4);
             Pub pub5 = new Pub("The Merlin", 3.8, 55.929056, -3.210270);
             pubRepository.save(pub5);
-            Pub pub6 = new Pub("Tiles", 4.00, 55.953627, -3.192097);
-            pubRepository.save(pub6);
-            Pub pub7 = new Pub("Footlights", 4.30, 55.946040, -3.203641);
-            pubRepository.save(pub7);
-            Pub pub8 = new Pub("Dagda", 3.70, 55.942128, -3.183932);
-            pubRepository.save(pub8);
-            Pub pub9 = new Pub("The Waiting Room", 3.60, 55.925335, -3.210406);
-            pubRepository.save(pub9);
+
 
             Review review1 = new Review(10, "Head: 8/10\n" +
                     "Carbonation: 10/10 \n" +
