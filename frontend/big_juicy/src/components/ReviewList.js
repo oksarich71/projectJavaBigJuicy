@@ -11,7 +11,7 @@ const ReviewList = (props) => {
           pub={rev.pub.name}
           user={rev.user.name}
           date={rev.date}
-          image={rev.image}
+          image={rev.image} className="image"
           rating={rev.rating}
           text={rev.text}
         />
@@ -28,7 +28,7 @@ const ReviewList = (props) => {
   return (
     <div className="review-thingy">
 
-      <h2>Here is where all the reviews will be listed:</h2>
+      <h2></h2>
 
       {backwardsArrayOfReviews}
 

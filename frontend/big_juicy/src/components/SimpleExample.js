@@ -117,16 +117,8 @@ export default class SimpleExample extends Component<{}, State> {
           />
           {/* <style rel="stylesheet" href="http:/unpkg.com/leaflet@1.3.4/dist/leaflet.css"</link> */}
           <style>@import url('http:/unpkg.com/leaflet@1.3.4/dist/leaflet.css')</style>
-          // <Marker position={position}>
-          // </Marker>
-          // <Marker position={this.state.testMarkers.latlng}>
-          // </Marker>
 
-          // <Marker position={[55.945691, -3.203956]} img="../../public/favicon.ico">
-          //   <Popup>
-          //   A pretty CSS3 popup. <br /> Easily customizable.
-          //   </Popup>
-          // </Marker>
+
           <div className="markers here">
             {this.state.markers}
           </div>
