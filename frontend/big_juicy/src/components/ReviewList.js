@@ -11,7 +11,7 @@ const ReviewList = (props) => {
           pub={rev.pub.name}
           user={rev.user.name}
           date={rev.date}
-          image={rev.image}
+          image={rev.image} className="image"
           rating={rev.rating}
           text={rev.text}
         />
