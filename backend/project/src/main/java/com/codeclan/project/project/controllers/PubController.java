@@ -27,6 +27,7 @@ public class PubController {
 
     @PostMapping(value = "/pubs")
     Pub newPub(@RequestBody Pub newPub) {
+        System.out.println(newPub);
         return pubRepository.save(newPub);
     }
 }

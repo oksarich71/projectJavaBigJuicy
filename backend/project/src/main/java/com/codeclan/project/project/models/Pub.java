@@ -19,14 +19,14 @@ import java.util.List;
         @Column(name="name")
         private String name;
 
-        @Column(name="price")
+        @Column(name="price", length=10)
         private double price;
 
 
-        @Column(name = "latitude")
+        @Column(name = "latitude", length=10)
         private double latitude;
 
-        @Column(name = "longitude")
+        @Column(name = "longitude", length=10)
         private double longitude;
 
     @JsonIgnoreProperties("pubs")
@@ -74,7 +74,7 @@ import java.util.List;
             return latitude;
         }
 
-        public void setLatitude(int latitude) {
+        public void setLatitude(double latitude) {
             this.latitude = latitude;
         }
 
@@ -82,7 +82,7 @@ import java.util.List;
             return longitude;
         }
 
-        public void setLongitude(int longitude) {
+        public void setLongitude(double longitude) {
             this.longitude = longitude;
         }
 

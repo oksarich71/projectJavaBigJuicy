@@ -100,13 +100,15 @@ class ReviewForm extends Component {
         <div className="form-item">
           <label className="button">Select User</label>
           <select name="user" onChange={this.handleUserChange}>
+          <option value="" selected disabled hidden>Choose here</option>
               {allUsers}
           </select>
         </div>
 
-        <div className="form-item" onChange={this.handlePubChange}>
+        <div className="form-item">
           <label className="button">Select Pub</label>
-          <select name="pub">
+          <select name="pub" onChange={this.handlePubChange}>
+          <option value="" selected disabled hidden>Choose here</option>
               {allPubs}
           </select>
         </div>

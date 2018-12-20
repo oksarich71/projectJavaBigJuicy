@@ -72,15 +72,15 @@ export default class SimpleExample extends Component<{}, State> {
     })
   // }).then(()=> {return arrayOfMarkers})
 }).then(() => {
-  
+
     const image = new L.Icon({
                  iconUrl: require('../images/marker-icon.png'),
                  shadowUrl: require('../images/marker-shadow.png'),
-                 iconSize:     [30, 60], // size of the icon
-                 shadowSize:   [50, 64], // size of the shadow
-                 iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+                 iconSize:     [20, 40], // size of the icon
+                 shadowSize:   [1, 1], // size of the shadow
+                 iconAnchor:   [10, 40], // point of the icon which will correspond to marker's location
                  shadowAnchor: [4, 62],  // the same for the shadow
-                 popupAnchor:  [-3, -76]// point from which the popup should open relative to the iconAnchor
+                 popupAnchor:  [0, -50]// point from which the popup should open relative to the iconAnchor
              })
 
   const LeafletMarkers = arrayOfMarkers.map(marker => (
@@ -91,9 +91,7 @@ export default class SimpleExample extends Component<{}, State> {
           <br />
           £{marker.price}0 a pint
           <br />
-          pub id is: {marker.id}
-          <br />
-          <a href="http://localhost:8080/api/pubs/`${marker.id}`">Click here for all reviews for this pub!</a>
+          <a href="http://localhost:8080/api/pubs/">Click here for all reviews for this pub!</a>
         </span>
       </Popup>
     </Marker>

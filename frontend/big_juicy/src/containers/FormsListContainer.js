@@ -71,6 +71,7 @@ class FormsListContainer extends Component {
 
   handlePubSubmit(pub){
     const req = new Request();
+    console.log("this is the pub", pub);
     req.post('http://localhost:8080/api/pubs', pub)
     .then(() => {
       this.populate();

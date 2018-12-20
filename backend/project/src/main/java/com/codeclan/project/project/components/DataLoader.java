@@ -25,6 +25,17 @@ public class DataLoader implements ApplicationRunner {
     }
         public void run(ApplicationArguments args) {
 
+            User user13 = new User("Iain Floyd");
+            userRepository.save(user13);
+            User user14 = new User("Oksana Richards");
+            userRepository.save(user14);
+            User user15 = new User("Chris Reid");
+            userRepository.save(user15);
+            User user16 = new User("Michael Capmbell");
+            userRepository.save(user16);
+            User user17 = new User("Hugh Brechin");
+            userRepository.save(user17);
+
             User user1 = new User("Jack Bell");
             userRepository.save(user1);
             User user2 = new User("George Whitelow");
@@ -49,7 +60,7 @@ public class DataLoader implements ApplicationRunner {
             userRepository.save(user11);
             User user12 = new User("Natasha Richards");
             userRepository.save(user12);
-            Pub pub1 = new Pub("Chanter", 3.7, 55.945691, -3.203956);
+            Pub pub1 = new Pub("Chanter", 3.85, 55.945691, -3.203956);
             pubRepository.save(pub1);
             Pub pub2 = new Pub("Teviot Row House", 3.9, 55.944728, -3.189007);
             pubRepository.save(pub2);
@@ -60,6 +71,14 @@ public class DataLoader implements ApplicationRunner {
             pubRepository.save(pub4);
             Pub pub5 = new Pub("The Merlin", 3.8, 55.929056, -3.210270);
             pubRepository.save(pub5);
+            Pub pub6 = new Pub("Tiles", 4.00, 55.953627, -3.192097);
+            pubRepository.save(pub6);
+            Pub pub7 = new Pub("Footlights", 4.30, 55.946040, -3.203641);
+            pubRepository.save(pub7);
+            Pub pub8 = new Pub("Dagda", 3.70, 55.942128, -3.183932);
+            pubRepository.save(pub8);
+            Pub pub9 = new Pub("The Waiting Room", 3.60, 55.925335, -3.210406);
+            pubRepository.save(pub9);
 
             Review review1 = new Review(10, "Head: 8/10\n" +
                     "Carbonation: 10/10 \n" +

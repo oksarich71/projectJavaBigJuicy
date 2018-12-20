@@ -6,8 +6,8 @@ class PubForm extends Component {
     this.state = {name: "", price: "", lat: "", long: ""};
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handlePriceChange = this.handlePriceChange.bind(this);
-    // this.handleLatChange = this.handleLatChange.bind(this);
-    // this.handleLongChange = this.handleLongChange.bind(this);
+    this.handleLatChange = this.handleLatChange.bind(this);
+    this.handleLongChange = this.handleLongChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
@@ -41,11 +41,11 @@ class PubForm extends Component {
     const newPub = {
       name: name,
       price: price,
-      // latitude: lat,
-      // longitude: long
+      latitude: lat,
+      longitude: long
     };
     this.props.handlePubSubmit(newPub);
-    this.setState({name: "", price: ""});
+    this.setState({name: "", price: "", lat: "", long: ""});
   }
 
   render(){
@@ -73,6 +73,26 @@ class PubForm extends Component {
             />
         </div>
 
+        <div className="form-item">
+          <label>Latitude:</label>
+          <input
+            type="double"
+            placeholder="55.94"
+            value={this.state.lat}
+            onChange={this.handleLatChange}
+            />
+        </div>
+
+        <div className="form-item">
+          <label>Longitude:</label>
+          <input
+            type="double"
+            placeholder="-3.20"
+            value={this.state.long}
+            onChange={this.handleLongChange}
+            />
+        </div>
+
 
 
         <input
@@ -85,23 +105,3 @@ class PubForm extends Component {
 }
 
 export default PubForm;
-
-// <div className="form-item">
-//   <label>Latitude:</label>
-//   <input
-//     type="double"
-//     placeholder="55.9"
-//     value={this.state.lat}
-//     onChange={this.handleLatChange}
-//     />
-// </div>
-//
-// <div className="form-item">
-//   <label>Longitude:</label>
-//   <input
-//     type="double"
-//     placeholder="-3.2"
-//     value={this.state.long}
-//     onChange={this.handleLongChange}
-//     />
-// </div>
